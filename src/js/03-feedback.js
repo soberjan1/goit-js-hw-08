@@ -21,13 +21,6 @@ function onFormInput(evt) {
   );
 }
 
-function onFormSubmit(evt) {
-  evt.preventDefault();
-
-  evt.currentTarget.reset();
-  localStorage.removeItem(STORAGE_KEY);
-}
-
 function getSavedValue() {
   const savedValues = localStorage.getItem(STORAGE_KEY);
 
@@ -36,6 +29,16 @@ function getSavedValue() {
     refs.textareaEl.value = parse.message;
     refs.inputEl.value = parse.email;
   }
-  console.log(JSON.parse(savedValues));
 }
 getSavedValue();
+
+function onFormSubmit(evt) {
+  evt.preventDefault();
+  const qwe = {
+    email: refs.inputEl.value,
+    message: refs.textareaEl.value,
+  };
+  console.log(qwe);
+  evt.currentTarget.reset();
+  localStorage.removeItem(STORAGE_KEY);
+}
